@@ -1,0 +1,19 @@
+sudo: false
+language: node_js
+env:
+  - MONGO_URI_TEST=mongodb://localhost/Testing
+node_js:
+  - "stable"
+services:
+  - mongodb
+directories: -'node_modules'
+install:
+  - npm install
+cache:
+  npm: false
+notifications:
+  email: false
+script:
+  - npm run test
+after_success:
+  - npm run coverage
